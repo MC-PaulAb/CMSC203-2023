@@ -1,0 +1,157 @@
+/** Class: CMSC203 CRN 21575
+
+Program: Assignment #1
+
+Instructor: Gregory Grinberg
+
+Summary of Description: ESP Game, a game in which the user guesses the color that the computer picks and displays results
+
+Due Date: 09/11/2023
+
+Integrity Pledge: I pledge that I have completed the programming assignment independently.
+
+I have not copied the code from a student or any source.
+
+Student’s Name:Paul Abili
+
+Pseudocode: 
+Create Constants for different colors 
+Ask about the user
+Ask for due date
+Start loop
+Round Number
+Generate Random Number
+Have user guess
+Reveal Answer 
+Repeat 11 Times
+Display Record 
+End!
+*/
+
+import java.util.Scanner;
+import java.util.Random;
+public class ESP_Counter {
+    public static void main(String args[]) {
+
+// Variable creations
+        final String COLOR_RED = "Red";
+        final String COLOR_GREEN = "Green";
+        final String COLOR_BLUE = "Blue";
+        final String COLOR_ORANGE = "Orange";
+        final String COLOR_YELLOW = "Yellow";
+        int randNum = 0;
+        int correctCounter = 0;
+        String computerGuess = " ";
+        String playerGuess = " ";
+        boolean isValidResponse = false;
+
+        // Create Scanner
+        Scanner input = new Scanner(System.in);
+
+// Introductory Questions
+        System.out.print("Enter your name: ");
+        String name = input.nextLine();
+
+        System.out.print("Describe yourself: ");
+        String userDescription = input.nextLine();
+
+        System.out.print("Due Date: ");
+        String date = input.nextLine();
+
+        System.out.println("CMSC203 Assignment 1 Test your ESP skills!");
+        Random randomNumbers = new Random();
+
+//Loop for 11 Rounds
+        for(int i = 1; i < 12; i++) {
+            isValidResponse = false;
+// Generating Random Number
+            randNum = randomNumbers.nextInt(5) + 1;
+
+//Assigning Computer a Color based on Number
+            if(randNum == 1) {
+                computerGuess = COLOR_RED;
+            } else if(randNum == 2) {
+                computerGuess = COLOR_GREEN;
+            } else if(randNum == 3) {
+                computerGuess = COLOR_BLUE;
+            } else if(randNum == 4) {
+                computerGuess = COLOR_ORANGE;
+            } else if(randNum == 5) {
+                computerGuess = COLOR_YELLOW;
+            }
+// Round Number
+            System.out.println("Round " + i +  "\n");
+            System.out.println("I am thinking of a color.");
+            System.out.println("Is it Red, Green, Blue, Orange, or Yellow?");
+// Records Student's guess
+            System.out.println("Enter your guess: ");
+            playerGuess = input.nextLine();
+
+//Ensures that guess is valid and that case has no effect
+            if(playerGuess.equals("red") || playerGuess.equals("Red")) {
+                playerGuess = "Red";
+                isValidResponse = true;
+            } else if(playerGuess.equals("green") || playerGuess.equals("Green")) {
+                playerGuess = "Green";
+                isValidResponse = true;
+            } else if(playerGuess.equals("blue")|| playerGuess.equals("Blue")) {
+                playerGuess = "Blue";
+                isValidResponse = true;
+            } else if(playerGuess.equals("orange")|| playerGuess.equals("Orange")) {
+                playerGuess = "Orange";
+                isValidResponse = true;
+            } else if(playerGuess.equals("yellow") || playerGuess.equals("Yellow")) {
+                playerGuess = "Yellow";
+                isValidResponse = true;
+            }
+//If the color is invalid asks user to Enter a Valid Color
+            while(isValidResponse != true) {
+                // Checks if Color is Valid
+                if(playerGuess.equals("red") || playerGuess.equals("Red")) {
+                    playerGuess = "Red";
+                    isValidResponse = true;
+                } else if(playerGuess.equals("green") || playerGuess.equals("Green")) {
+                    playerGuess = "Green";
+                    isValidResponse = true;
+                } else if(playerGuess.equals("blue")|| playerGuess.equals("Blue")) {
+                    playerGuess = "Blue";
+                    isValidResponse = true;
+                } else if(playerGuess.equals("orange")|| playerGuess.equals("Orange")) {
+                    playerGuess = "Orange";
+                    isValidResponse = true;
+                } else if(playerGuess.equals("yellow") || playerGuess.equals("Yellow")) {
+                    playerGuess = "Yellow";
+                    isValidResponse = true;
+                }
+                // Enter a new Color, repeat loop
+                if(isValidResponse != true) {
+                    System.out.println("You entered incorrect color. Is it Red, Green, Blue, Orange, or Yellow? ");
+                    System.out.println("Enter your guess again: ");
+                    playerGuess = input.nextLine();
+                }
+
+
+            }
+// Checks if the user's guess is correct
+            if(playerGuess.compareTo(computerGuess) == 0) {
+                correctCounter++;
+            }
+// Reveals the Computer's Guess
+            System.out.println("I was thinking " + computerGuess);
+        }
+// End of Loop
+        System.out.println("Game Over");
+// Closes input stream
+        input.close();
+// Displays results with data entered previously.
+        System.out.println("You guessed " + correctCounter + " out of 11 colors correctly.");
+
+        System.out.println("Enter your name: " + name);
+
+        System.out.println("Describe yourself: " + userDescription);
+
+
+        System.out.println("Due Date: " + date);
+
+    }
+}
