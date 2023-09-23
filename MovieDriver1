@@ -7,17 +7,15 @@ public class MovieDriver1 {
 		Scanner keyboard = new Scanner(System.in);
 
 		// Create Instance of Movie Class
-
 		Movie myMovie = new Movie();
 
 		String movie, rating;
 		int ticketsSold;
 
 		// Gathers the name of the movie and sets the title of the movie
-
 		System.out.println("Enter the name of a movie");
 		movie = keyboard.nextLine();
-		myMovie.setTitle(movie);`
+		myMovie.setTitle(movie);
 
 		// Gathers the rating of the movie and sets the rating of the movie
 		System.out.println("Enter the rating of the movie");
@@ -29,7 +27,7 @@ public class MovieDriver1 {
 		ticketsSold = keyboard.nextInt();
 		myMovie.setSoldTickets(ticketsSold);
 		
-		// Prints the Movie infomation 
+		// Prints the Movie information 
 		System.out.println(myMovie.toString());
 
 		// Ends the code
